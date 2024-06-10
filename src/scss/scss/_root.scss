@@ -1,0 +1,14 @@
+:root {
+  --bs-heading-color: var(--px-heading);
+  --px-theme: #{$px-theme};
+  --px-theme-rgb: #{$px-theme-rgb};
+  --px-black: #{$px-black};
+  --px-white: #{$px-white};
+  --px-body-text: #{$px-body-text};
+  --px-primary: #{$px-primary};
+  --px-text: #{$px-text};
+  --px-heading: #{$px-heading};
+  --px-heading-hero: #{$px-heading-hero};
+  --px-nav-hover: #{$px-nav-hover};
+  --px-fixed-header: #{$px-fixed-header};
+}

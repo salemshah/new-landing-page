@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+$px-font: 'Space Grotesk', sans-serif !default;
+
+// Theme Variable
+
+$px-theme: #170498; //#301eb2;
+$px-theme-rgb: 7, 136, 255;
+$px-white: #ffffff;
+$px-body-text: #383737;
+$px-black: #040c16;
+$px-primary: #170498;
+
+$px-text: #707476; //#707476;
+//$px-heading: #000000;
+$px-heading: #6b6b6b;
+$px-heading-hero: #fff;
+$px-nav-hover: #594be0;
+$px-title-hero: #fff;
+$px-fixed-header: #170498;
+
+// Breakpoints
+$px-media-xsm: 567px !default;
+$px-media-sm: 767px !default;
+$px-media-md: 991px !default;
+$px-media-lg: 1200px !default;

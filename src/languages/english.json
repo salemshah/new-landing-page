@@ -1,0 +1,89 @@
+{
+  "header": [
+    {
+      "title": "HOME",
+      "url": "home"
+    },
+    {
+      "title": "ABOUT",
+      "url": "about"
+    },
+    {
+      "title": "OVERVIEW OF MINDA",
+      "url": "overview"
+    },
+    {
+      "title": "OUR APPROACH",
+      "url": "approach"
+    },
+    {
+      "title": "CONTACT US",
+      "url": "contact us"
+    }
+  ],
+  "hero": {
+    "heading": "WELCOME TO MINDA",
+    "typingText": [
+      "We play ?",
+      1500,
+      "MindA is the first educational game designed like a real video game. Visit our site to find out more.",
+      1500
+    ],
+    "description": "MindA is the first educational game designed like a real video game. Visit our site to find out more.",
+    "btnText": "Get in touch",
+    "btnUrl": "contact us"
+  },
+  "about": {
+    "miniTitle": "About",
+    "title": "About",
+    "description": "MindA is an educational video game intended for middle school students aged 10 to 15. The student learns by playing and plays thanks to what he learns. The objective of this game is to provide the child with new way of learning for and by oneself, while having fun.",
+    "description1": "Through multiple mini-games, the child will progress through the levels until reaching a boss. If he manages to complete a level, he will receive rewards such as cosmetics for his avatar or his house , collectible items and virtual currency that he can spend to buy more cosmetics and items. He will also have side challenges to complete, daily, weekly and monthly objectives to achieve.",
+    "description2": "Each school subject will have its own universe, challenges and solutions. The contents are in accordance with the French educational program.",
+    "description3": "The game will be available on smartphones and tablets, Android and IOS. Parents and teachers will have an administrator account and will be able to follow the child's progress in the game and therefore in what they have learned of his lessons.",
+    "btnText": "Get in touch",
+    "btnUrl": "contact us"
+  },
+  "approach": {
+    "miniTitle": "Our Approach",
+    "title": "Our Approach",
+    "description": "We believe that the best way to learn is the fun method. We assimilate better and more easily in an entertaining context. This is even more true for a child.",
+    "description1": "Games are also a good way to teach a child autonomy. The right to make mistakes, decision-making, finding ways to move forward on your own, etc.",
+    "description2": "Young people live with screens every day. Why not make it a useful and fun source of knowledge for them?",
+    "btnText": "Get in touch",
+    "btnUrl": "contact us"
+  },
+  "contact": {
+    "sectionHeading": {
+      "title": "Convinced by our initiative? Become a beta tester!",
+      "subTitle": "Be the first to try the application for free. Your feedback will allow us to improve the final version, and you will obtain 1 month free as a token of our gratitude \uD83D\uDE01"
+    },
+    "form": {
+      "name": {
+        "label": "Your name",
+        "placeholder": "Name *"
+      },
+      "email": {
+        "label": "Your email",
+        "placeholder": "Email *"
+      },
+      "subject": {
+        "label": "Your email",
+        "placeholder": "Subject *"
+      },
+      "message": {
+        "label": "Your message",
+        "placeholder": "Message *"
+      }
+    },
+    "contactInfo": [
+      {
+        "title": "Write an email",
+        "email": "mindA@gmail.com"
+      },
+      {
+        "title": "contact service",
+        "tel": "+33 7 88 33 22 44"
+      }
+    ]
+  }
+}
