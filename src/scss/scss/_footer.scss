@@ -1,0 +1,16 @@
+.footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(101, 101, 101, 0.1);
+    color: rgba(33, 33, 33, 0.75);
+    font-size: 14px;
+    .nav {
+    	a {
+		    font-size: 14px;
+			color: rgba(66, 66, 66, 0.75);
+			+ a {
+				margin-left: 18px;
+			}
+    	}
+    }
+}

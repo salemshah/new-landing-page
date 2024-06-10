@@ -1,0 +1,89 @@
+{
+  "header": [
+    {
+      "title": "ACCUEIL",
+      "url": "home"
+    },
+    {
+      "title": "A PROPOS",
+      "url": "about"
+    },
+    {
+      "title": "APERÇU DE MINDA",
+      "url": "overview"
+    },
+    {
+      "title": "NOTRE APPROCHE",
+      "url": "approach"
+    },
+    {
+      "title": "CONTACTEZ-NOUS",
+      "url": "contactus"
+    }
+  ],
+  "hero": {
+    "heading": "BIENVENUE SUR MINDA",
+    "typingText": [
+      "On joue ?",
+      1500,
+      "MindA est le premier jeu éducatif pensé comme un vrai jeu vidéo Visitez notre site pour en savoir plus.",
+      1500
+    ],
+    "description": "MindA est le premier jeu éducatif pensé comme un vrai jeu vidéo Visitez notre site pour en savoir plus.",
+    "btnText": "Entrer en contact",
+    "btnUrl": "contactus"
+  },
+  "about": {
+    "miniTitle": "A propos",
+    "title": "A propos",
+    "description": "MindA est un jeu vidéo éducatif destiné aux collégiens de 10 à 15 ans. L’élève apprend en jouant et joue grâce à ce qu’il apprend. L’objectif de ce jeu est de fournir à l’enfant une nouvelle façon d’apprendre pour et par lui-même, en s’amusant.",
+    "description1": "Au travers de multiples mini-jeux, l’enfant progressera dans les niveaux jusqu’à atteindre un boss. S'il parvient à terminer un niveau, il recevra des récompenses tels que des cosmétiques pour son avatar ou sa maison, des objets collectionnables et une monnaie virtuelle qu’il pourra dépenser pour acheter plus de cosmétiques et d’objets. Il disposera aussi de défis annexes à relever, d’objectifs quotidiens, hebdomadaires et mensuels à atteindre.",
+    "description2": "Chaque matière scolaire disposera de son univers, de ses défis et de ses solutions propres. Les contenus sont en accord avec le programme éducatif français.",
+    "description3": "Le jeu sera disponible sur smartphone et tablettes, Android et IOS. Les parents et les enseignants disposeront d’un compte administrateur et pourront suivre la progression de l’enfant dans le jeu et donc dans ce qu’il aura retenu de ses leçons.",
+    "btnText": "Entrer en contact",
+    "btnUrl": "contactus"
+  },
+  "approach": {
+    "miniTitle": "Notre Approche",
+    "title": "Notre Approche",
+    "description": "Nous pensons que la meilleure façon d’apprendre est la méthode ludique. Nous assimilons mieux et plus facilement dans un contexte divertissant. C’est d’autant plus vrai pour un enfant.",
+    "description1": "Le jeu est aussi un bon moyen d’enseigner l’autonomie à un enfant. Droit à l’erreur, prise de décision, recherche des moyens d’avancer par soi, etc.",
+    "description2": "Le jeune public vit quotidiennement avec des écrans. Pourquoi ne pas en faire une source de savoir utile et amusante pour eux ?",
+    "btnText": "Entrer en contact",
+    "btnUrl": "contactus"
+  },
+  "contact": {
+    "sectionHeading": {
+      "title": "Convaincus par notre initiative ? Devenez beta-testeur !",
+      "subTitle": "Soyez les premiers à essayer gratuitement l’application. Vos retours nous permettrons d’améliorer la version finale, et vous obtiendrez 1 mois gratuit en gage de notre gratitude \uD83D\uDE01"
+    },
+    "form": {
+      "name": {
+        "label": "Votre nom",
+        "placeholder": "Nom *"
+      },
+     "email": {
+        "label": "Votre email",
+        "placeholder": "Email *"
+      },
+     "subject": {
+        "label": "Votre sujet",
+        "placeholder": "Sujet *"
+      },
+     "message": {
+        "label": "Votre message",
+        "placeholder": "Message *"
+      }
+    },
+    "contactInfo": [
+      {
+        "title": "Écrire un e-mail",
+        "email": "mindA@gmail.com"
+      },
+      {
+        "title": "service de contact",
+        "tel": "+33 7 88 33 22 44"
+      }
+    ]
+  }
+}
