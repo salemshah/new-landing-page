@@ -73,6 +73,11 @@
       "message": {
         "label": "Your message",
         "placeholder": "Message *"
+      },
+      "term": {
+        "label1": "I accept them",
+        "label2": "terms and conditions",
+        "condition": "The information collected on this form is processed by MindA for the purposes of providing you with a personalized service, managing your requests and your subscription, producing statistical analyses, offering you and keeping you informed of news and offers from MindA, and subject to your choices, offers from our partners Your data is intended for MindA as well as its service providers or partners located in or outside the European Union. Your data will be kept for the periods necessary for the purposes for which they are used. processed, specified in the General Conditions of Use available at the following address: new-minda.netlify.app In accordance with the “Informatique et Libertés” law, you can exercise your right of access, rectification or erasure. data concerning you, limitation or opposition to the processing of your data and the right to portability, or even specify the fate of your information in the event of death by contacting: support@mindaapp.com"
       }
     },
     "contactInfo": [

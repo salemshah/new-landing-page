@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import {useEffect} from 'react';
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
+import TermCondition from "./pages/TermCondition";
 
 function App() {
     useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Layout/>}>
                 <Route index element={<Home/>}/>
+                <Route path="term-condition" element={<TermCondition/>}/>
                 <Route path="/auth" element={<Auth/>}/>
                 <Route path="/admin" element={<Admin/>}/>
             </Route>
