@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import HomePagdData from '../data/HomePagdData.json';
 import About from '../components/About';
 import Overview from "../components/Overview";
+import Approche from "../components/Approche";
 
 
 export default function Home() {
@@ -14,5 +15,6 @@ export default function Home() {
         <Hero data={hero} socialData={socialBtns}/>
         <About data={about}/>
         <Overview data={service}/>
+        <Approche data={approche}/>
     </>);
 }
