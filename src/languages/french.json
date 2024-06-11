@@ -73,6 +73,11 @@
      "message": {
         "label": "Votre message",
         "placeholder": "Message *"
+      },
+     "term": {
+        "label1": "J'accepte les ",
+        "label2": "termes et conditions",
+        "condition": "Les informations recueillies sur ce formulaire sont traitées par MindA aux fins de vous fournir un service personnalisé, gérer vos demandes et votre abonnement, produire des analyses statistiques, vous proposer et vous tenir informé des actualités et offres de MindA, et sous réserve de vos choix, des offres de nos partenaires. Vos données sont destinées à MindA ainsi qu’à ses prestataires ou partenaires situés dans ou hors de l’Union européenne. Vos données seront conservées pendant les durées nécessaires aux finalités pour lesquelles elles seront traitées, précisées dans les Conditions générales d’utilisation disponibles à l’adresse suivante : new-minda.netlify.app. Conformément à la loi « informatique et libertés », vous pouvez exercer votre droit d’accès, de rectification ou d’effacement des données vous concernant, de limitation ou d’opposition au traitement de vos données et de droit à la portabilité, ou encore préciser le sort de vos informations en cas de décès en contactant : support@mindaapp.com"
       }
     },
     "contactInfo": [

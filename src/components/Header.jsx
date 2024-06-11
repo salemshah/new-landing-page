@@ -33,7 +33,6 @@ export default function Header() {
         >
             <div className="container">
                 <div className="logo">
-                    {/*<Link className="navbar-brand" href="/">*/}
                     <ScrollLink
                         to="home"
                         spy={true}
@@ -49,9 +48,7 @@ export default function Header() {
                             src="/images/logo.png"
                         />
                     </ScrollLink>
-                    {/*</Link>*/}
                 </div>
-                {/* / */}
                 <ul className="main-menu">
                     {header.map((row, index) => {
                         return (

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {addDoc, collection, getDocs} from "firebase/firestore";
+import {addDoc, collection} from "firebase/firestore";
 import {db} from "../db-config/firebase";
 import emailjs from "@emailjs/browser";
 import {useTranslation} from "react-i18next";
@@ -91,7 +91,7 @@ export default function ContactForm() {
                     </div>
                 </div>
                 <div className="col-md-12">
-                <div className="form-group">
+                    <div className="form-group">
                         <label className="form-label">{t("contact.form.message.label")}</label>
                         <textarea
                             name="message"
@@ -103,7 +103,18 @@ export default function ContactForm() {
                             required
                         />
                     </div>
+
                 </div>
+                <div className="col-md-12">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id="term-condation" required/>
+                        <label className="form-label" htmlFor="term-condation">
+
+                            {t("contact.form.term.label1")} <a href="/term-condition" target="_blank">{t("contact.form.term.label2")}</a>.
+                        </label>
+                    </div>
+                </div>
+
                 <div className="col-md-12">
                     <div className="send">
                         <button
