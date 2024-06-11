@@ -79,7 +79,7 @@ export default function Hero({data}) {
                     </div>
                     <div className="col-lg-4">
                         <div className="hs-banner">
-                            <img src={imgUrl} className="home-banner" alt="Admin"/>
+                            <img src={imgUrl} className="home-banner" alt="minda"/>
                         </div>
                     </div>
                 </div>
