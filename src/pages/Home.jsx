@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from "../components/Hero";
 import HomePagdData from '../data/HomePagdData.json';
 import About from '../components/About';
+import Overview from "../components/Overview";
 
 
 export default function Home() {
@@ -12,5 +13,6 @@ export default function Home() {
     return (<>
         <Hero data={hero} socialData={socialBtns}/>
         <About data={about}/>
+        <Overview data={service}/>
     </>);
 }
