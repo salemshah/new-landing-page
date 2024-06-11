@@ -4,6 +4,7 @@ import HomePagdData from '../data/HomePagdData.json';
 import About from '../components/About';
 import Overview from "../components/Overview";
 import Approche from "../components/Approche";
+import Contact from '../components/Contact';
 
 
 export default function Home() {
@@ -16,5 +17,6 @@ export default function Home() {
         <About data={about}/>
         <Overview data={service}/>
         <Approche data={approche}/>
+        <Contact data={contact} socialData={socialBtns}/>
     </>);
 }
