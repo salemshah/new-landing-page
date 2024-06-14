@@ -168,7 +168,7 @@ a {
         border-radius: 4px;
         padding: 5px 12px;
         display: inline-block;
-        color: red;//var(--px-heading);
+        color: red; //var(--px-heading);
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
@@ -195,7 +195,7 @@ a {
     }
 
     h2 {
-      color: red;//var(--px-heading);
+      color: red; //var(--px-heading);
       font-weight: 700;
       font-size: 70px;
       text-transform: uppercase;
@@ -211,6 +211,7 @@ a {
     }
 
     .text {
+      max-width: 40rem;
       font-weight: 400;
       font-size: 20px;
       line-height: 150%;
@@ -679,7 +680,7 @@ a {
   }
 
   .contactus-box {
-    border:  1px solid #9d9d9d;//1px solid rgba(var(--px-theme-rgb), 0.2);
+    border: 1px solid #9d9d9d; //1px solid rgba(var(--px-theme-rgb), 0.2);
   }
 
   .contact-form {
@@ -694,7 +695,7 @@ a {
 
     .form-control {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #5e5e67;//1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid #5e5e67; //1px solid rgba(255, 255, 255, 0.15);
       color: var(--px-body-text);
       box-shadow: none;
       padding: 0.575rem 0.75rem;
