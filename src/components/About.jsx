@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 
 export default function About({data}) {
     const {t} = useTranslation();
-    const {imgSrc, miniTitle, title, description, description1, description2, description3, funfacts, btnText, btnUrl} =
+    const {imgSrc, btnUrl} =
         data;
     return (
         <section className="about-section section" id="about">

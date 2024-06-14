@@ -11,7 +11,7 @@ export default function Hero({data}) {
     const typingText = t("hero.typingText", {returnObjects: true});
 
 
-    const {imgUrl, btnUrl, socialData} = data;
+    const {imgUrl, btnUrl} = data;
     return (
         <section className="home-section" id="home" data-scroll-index={0} style={{
             background: `url("/images/hero-background.svg")`,
