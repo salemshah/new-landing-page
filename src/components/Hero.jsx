@@ -3,15 +3,18 @@ import React from 'react';
 import {TypeAnimation} from 'react-type-animation';
 import {Link as ScrollLink} from 'react-scroll';
 import {useTranslation} from "react-i18next";
+import useSWR from "swr";
+import fetcher from "../client/httpRequests";
+import IconLink from "./IconLink";
 
-export default function Hero({data}) {
+export default function Hero({data, service}) {
     const {t} = useTranslation();
-    // const [typingText, setTypingText] = useState([])
+    const {data: hero} = useSWR('/hero-active', fetcher)
 
-    const typingText = t("hero.typingText", {returnObjects: true});
-
-
-    const {imgUrl, btnUrl} = data;
+    // Ensure hero and its properties exist before using them
+    const textAnim1 = hero?.textAnim1 || 'Loading...';
+    const textAnim2 = hero?.textAnim2 || 'Loading...';
+    const {btnUrl} = data;
     return (
         <section className="home-section" id="home" data-scroll-index={0} style={{
             background: `url("/images/hero-background.svg")`,
@@ -29,7 +32,8 @@ export default function Hero({data}) {
                                 data-aos-duration="1200"
                                 data-aos-delay="100"
                             >
-                                {t("hero.heading")}
+                                {/*{t("hero.heading")}*/}
+                                {hero?.heading}
                             </h1>
                             <h3
                                 style={{minHeight: 120}}
@@ -38,19 +42,22 @@ export default function Hero({data}) {
                                 data-aos-delay="200"
                             >
                                 <TypeAnimation
-                                    sequence={typingText}
-                                    speed={0}
+                                    key={textAnim1 + textAnim2}
+                                    sequence={[textAnim1, 1500, textAnim2, 1500]}
+                                    speed={50}
+                                    cursor={true}
                                     repeat={Infinity}
                                 />
                             </h3>
-                            <p
+                            <div
                                 className="text"
                                 data-aos="fade-up"
                                 data-aos-duration="1200"
                                 data-aos-delay="300"
                             >
-                                {t('hero.description')}
-                            </p>
+                                <div dangerouslySetInnerHTML={{__html: hero?.description}}/>
+                            </div>
+
                             <div
                                 className="btn-bar d-flex align-items-sm-center flex-column flex-sm-row"
                                 data-aos="fade-up"
@@ -65,21 +72,25 @@ export default function Hero({data}) {
                                     duration={500}
                                     className="px-btn"
                                 >
-                                    <span>{t("hero.btnText")}</span>{' '}
+                                    <span>{t("hero.btnText")}</span>
                                     <i className="d-flex">
                                         <Icon icon="bi:arrow-right"/>
                                     </i>
                                 </ScrollLink>
-                                {/*<SocialBtns*/}
-                                {/*  socialBtns={socialData}*/}
-                                {/*  variant="ps-sm-4 pt-4 pt-sm-0 d-flex justify-content-center justify-content-sm-start"*/}
-                                {/*/>*/}
+                                <div className="mt-4 mt-md-0 hero-social">
+                                    <IconLink icon="ic:baseline-facebook" to={service?.facebookLink}/>
+                                    <IconLink icon="line-md:instagram" to={service?.instagramLink}/>
+                                    <IconLink icon="ic:baseline-tiktok" to={service?.tiktokLink}/>
+                                    <IconLink icon="line-md:twitter-x-alt" to={service?.xLink}/>
+                                    <IconLink icon="line-md:youtube" to={service?.youtubeLink}/>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-4">
                         <div className="hs-banner">
-                            <img src={imgUrl} className="home-banner" alt="minda"/>
+                            {/*<img src={imgUrl} className="home-banner" alt="minda"/>*/}
+                            <img src={hero?.imgUrl} className="home-banner" alt="minda"/>
                         </div>
                     </div>
                 </div>

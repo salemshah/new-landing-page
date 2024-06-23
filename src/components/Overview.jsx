@@ -1,9 +1,7 @@
 import React from 'react';
 import SectionHeading from './SectionHeading';
-import {useTranslation} from "react-i18next";
 
 export default function Overview({data}) {
-    const {t} = useTranslation();
     const {sectionHeading, allService} = data;
     return (
         <section className="section" id="overview">

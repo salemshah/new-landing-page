@@ -13,19 +13,6 @@ const Auth = () => {
 
     const [email, setEmail] = useState("")
 
-    //+++++++++++++++++++++++++++++++++++++++ GOOGLE LOGIN ++++++++++++++++++++++++
-    // const signIn = async () => {
-    //     try {
-    //         const data = await signInWithPopup(auth, provider)
-    //         if (data) {
-    //             localStorage.setItem("email", data?.user?.email)
-    //             navigate("/admin")
-    //         }
-    //     } catch (e) {
-    //         console.error("eeeeeee", e)
-    //     }
-    // }
-
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         email: '',

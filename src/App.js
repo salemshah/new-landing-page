@@ -7,7 +7,6 @@ import {useEffect} from 'react';
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
 import TermCondition from "./pages/TermCondition";
-
 function App() {
     useEffect(() => {
         Aos.init({

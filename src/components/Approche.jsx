@@ -3,18 +3,20 @@ import React from 'react';
 import parser from 'html-react-parser';
 import {Link as ScrollLink} from 'react-scroll';
 import {useTranslation} from "react-i18next";
+import useSWR from "swr";
+import fetcher from "../client/httpRequests";
 
 export default function Approche({data}) {
     const {t} = useTranslation();
-    const {imgSrc, miniTitle, title, description, description1, description2, funfacts, btnText, btnUrl} =
-        data;
+    const {data: approach} = useSWR('/approach-active', fetcher)
+    const {btnUrl} = data;
     return (
         <section className="about-section section" id="approach">
             <div className="container">
                 <div className="effect-1">
                     <img
                         src="/images/effect-1.svg"
-                        alt="Shape"
+                        alt="mainda approche"
                         data-aos="zoom-in"
                         data-aos-duration="1200"
                         data-aos-delay="500"
@@ -23,7 +25,7 @@ export default function Approche({data}) {
                 <div className="effect-2">
                     <img
                         src="/images/effect-2.svg"
-                        alt="Shape"
+                        alt="mainda approch"
                         data-aos="zoom-in"
                         data-aos-duration="1200"
                         data-aos-delay="400"
@@ -37,7 +39,7 @@ export default function Approche({data}) {
                         data-aos-delay="500"
                     >
                         <div className="about-banner text-center">
-                            <img src={imgSrc} alt="Thumb"/>
+                            <img src={approach?.imgUrl} alt="approach"/>
                         </div>
                     </div>
                     <div className="col-lg-6 col-xl-5 px-lg-5">
@@ -56,9 +58,10 @@ export default function Approche({data}) {
 
                                 <h2>{parser(t("approach.miniTitle"))}</h2>
                             </div>
-                            <p>{t("approach.description")}</p>
-                            <p>{t("approach.description1")}</p>
-                            <p>{t("approach.description2")}</p>
+                            <div dangerouslySetInnerHTML={{__html: approach?.description}}/>
+                            {/*<p>{t("approach.description")}</p>*/}
+                            {/*<p>{t("approach.description1")}</p>*/}
+                            {/*<p>{t("approach.description2")}</p>*/}
                             <div className="review-box">
                                 {/*{funfacts?.map((item, index) => (*/}
                                 {/*  <div className="r-box" key={index}>*/}
