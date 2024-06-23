@@ -1,13 +1,11 @@
 import React from 'react';
-import SocialBtns from './SocialBtns';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
-import {useTranslation} from "react-i18next";
+import IconLink from "./IconLink";
 
-export default function Contact({ data, socialData }) {
-  const {t} = useTranslation();
+export default function Contact({ data, service }) {
 
-  const { contactImg, contactInfo } = data;
+  const { contactImg } = data;
 
   return (
     <section id="contactus" className="section contactus-section">
@@ -22,8 +20,8 @@ export default function Contact({ data, socialData }) {
                 data-aos-duration="1200"
                 data-aos-delay="200"
               >
-                <h5>{t("contact.sectionHeading.title")}</h5>
-                <p className="m-0">{t("contact.sectionHeading.subTitle")}</p>
+                <h5>{service?.formHeader}</h5>
+                <p className="m-0">{service?.formDescription}</p>
               </div>
             </div>
           </div>
@@ -35,10 +33,16 @@ export default function Contact({ data, socialData }) {
             </div>
             <div className="col-lg-4 pe-md-5">
               <div className="contact-banner d-none d-lg-block">
-                <img src={contactImg} alt="Avatar" />
+                <img src={contactImg} alt="Avatar"/>
               </div>
-              <ContactInfo contactInfoData={contactInfo} />
-              <SocialBtns socialBtns={socialData} />
+              <ContactInfo service={service}/>
+              <div className="mt-4 mt-md-0 hero-social">
+                <IconLink icon="ic:baseline-facebook" to={service?.facebookLink}/>
+                <IconLink icon="line-md:instagram" to={service?.instagramLink}/>
+                <IconLink icon="ic:baseline-tiktok" to={service?.tiktokLink}/>
+                <IconLink icon="line-md:twitter-x-alt" to={service?.xLink}/>
+                <IconLink icon="line-md:youtube" to={service?.youtubeLink}/>
+              </div>
             </div>
           </div>
         </div>

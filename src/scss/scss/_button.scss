@@ -14,36 +14,44 @@
   box-shadow: none;
   text-transform: uppercase;
   cursor: pointer;
+
   i {
     margin-left: 10px;
   }
+
   &:hover {
     background-color: var(--px-black);
     color: var(--px-white);
     border: 2px solid var(--px-white);
   }
+
   &.dark {
     background: var(--px-black);
     border: 1px solid var(--px-black);
     color: var(--px-white);
+
     &:hover {
       background: var(--px-white);
       color: var(--px-black);
     }
   }
+
   &.light {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--px-white);
+
     &:hover {
       background: var(--px-white);
       color: var(--px-black);
     }
   }
+
   &.white {
     background: var(--px-white);
     border: 1px solid var(--px-white);
     color: var(--px-black);
+
     &:hover {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.15);
@@ -54,27 +62,31 @@
 
 .social-icon {
   a {
-    width: 46px;
-    height: 46px;
+    width: 50px;
+    height: 50px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--px-white);
-    border: 2px solid var(--px-white);
-    margin-right: 8px;
+    color: var(--px-primary);
+    border: 4px solid var(--px-primary);
+    //margin-right: 8px;
     position: relative;
     transition: ease top 0.35s;
     top: 0;
+
     &:hover {
       top: -2px;
     }
+
     &.dribbble {
       background: #f26798;
     }
+
     &.facebook {
       background: #1877f2;
     }
+
     &.linkedin {
       background: #1275b1;
     }

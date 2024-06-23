@@ -1,131 +1,152 @@
-import React, {useEffect, useState} from 'react';
-import {addDoc, collection} from "firebase/firestore";
-import {db} from "../db-config/firebase";
-import emailjs from "@emailjs/browser";
-import {useTranslation} from "react-i18next";
+import React, {useState} from 'react';
+import {useForm, Controller} from 'react-hook-form';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup';
+import axiosInstance from "../client/axiosInstence";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const schema = yup.object().shape({
+    name: yup.string().required('Le nom est requis'),
+    email: yup.string().email('Email invalide').required('L\'email est requis'),
+    subject: yup.string().required('Le sujet est requis'),
+    message: yup.string().required('Le message est requis'),
+    terms: yup.bool().oneOf([true], 'Les termes doivent être acceptés'),
+});
 
 export default function ContactForm() {
-    const {t} = useTranslation();
-
-    const [loading, setLoading] = useState(false);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+    const {handleSubmit, reset, control, formState: {errors}} = useForm({
+        resolver: yupResolver(schema),
     });
 
-    // Handler for input field changes
-    const handleInputChange = event => {
-        const {name, value} = event.target;
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => emailjs.init("l6oIXPqM4hQPIIsv-"), []);
-
-    const onSubmit = async event => {
-        event.preventDefault();
+    const onSubmit = async (data) => {
         setLoading(true);
-        if (!formData.name && !formData.email && !formData.subject && !formData.message) return console.error("nullllllllllll")
-
-        const serviceId = "service_o0p6igt"
-        const templateId = "template_i3qkk58"
-
         try {
-            await emailjs.sendForm(serviceId, templateId, event.target)
-            const docRef = await addDoc(collection(db, "messages"), formData);
-            console.log("Document written with ID: ", docRef.id);
-            setFormData({name: '', email: '', subject: '', message: ''});
+            await axiosInstance.post('/message', data);
+            toast.success('Message envoyé avec succès!');
+            reset()
+        } catch (error) {
+            console.error('Error sending message:', error);
+            toast.error('Échec de l\'envoi du message');
+        } finally {
             setLoading(false);
-            alert("Nous avons reçu votre message et nous vous contacterons dans les plus brefs délais")
-        } catch (e) {
-            console.error("Error adding document: ", e);
         }
     };
+
     return (
-        <form id="contact-form" onSubmit={onSubmit}>
-            <div className="row gx-3 gy-4">
-                <div className="col-md-6">
-                    <div className="form-group">
-                        <label className="form-label">{t("contact.form.name.label")}</label>
-                        <input
-                            name="name"
-                            placeholder={t("contact.form.name.placeholder")}
-                            className="form-control"
-                            type="text"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            required
-                        />
+        <>
+            <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
+                <div className="row gx-3 gy-4">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label className="form-label">Nom</label>
+                            <Controller
+                                name="name"
+                                control={control}
+                                defaultValue=""
+                                render={({field}) => (
+                                    <input
+                                        {...field}
+                                        placeholder="Entrez votre nom"
+                                        className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                                    />
+                                )}
+                            />
+                            {errors.name && <div className="invalid-feedback">{errors.name.message}</div>}
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label className="form-label">Email</label>
+                            <Controller
+                                name="email"
+                                control={control}
+                                defaultValue=""
+                                render={({field}) => (
+                                    <input
+                                        {...field}
+                                        placeholder="Entrez votre email"
+                                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                                        type="email"
+                                    />
+                                )}
+                            />
+                            {errors.email && <div className="invalid-feedback">{errors.email.message}</div>}
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="form-group">
+                            <label className="form-label">Sujet</label>
+                            <Controller
+                                name="subject"
+                                control={control}
+                                defaultValue=""
+                                render={({field}) => (
+                                    <input
+                                        {...field}
+                                        placeholder="Entrez le sujet"
+                                        className={`form-control ${errors.subject ? 'is-invalid' : ''}`}
+                                    />
+                                )}
+                            />
+                            {errors.subject && <div className="invalid-feedback">{errors.subject.message}</div>}
+                        </div>
+                    </div>
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <label className="form-label">Message</label>
+                            <Controller
+                                name="message"
+                                control={control}
+                                defaultValue=""
+                                render={({field}) => (
+                                    <textarea
+                                        {...field}
+                                        placeholder="Entrez votre message"
+                                        rows={4}
+                                        className={`form-control ${errors.message ? 'is-invalid' : ''}`}
+                                    />
+                                )}
+                            />
+                            {errors.message && <div className="invalid-feedback">{errors.message.message}</div>}
+                        </div>
+                    </div>
+                    <div className="col-md-12">
+                        <div className="form-check">
+                            <Controller
+                                name="terms"
+                                control={control}
+                                defaultValue={false}
+                                render={({field}) => (
+                                    <input
+                                        {...field}
+                                        className={`form-check-input ${errors.terms ? 'is-invalid' : ''}`}
+                                        type="checkbox"
+                                        id="term-condation"
+                                    />
+                                )}
+                            />
+                            <label className="form-label" htmlFor="term-condation">
+                                J'accepte les <a href="/term-condition" target="_blank">termes et conditions</a>.
+                            </label>
+                            {errors.terms && <div className="invalid-feedback">{errors.terms.message}</div>}
+                        </div>
+                    </div>
+                    <div className="col-md-12">
+                        <div className="send">
+                            <button
+                                className={`px-btn w-100 ${loading ? 'disabled' : ''}`}
+                                type="submit"
+                                disabled={loading}
+                            >
+                                {loading ? 'Envoi...' : 'Envoyer le message'}
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div className="col-md-6">
-                    <div className="form-group">
-                        <label className="form-label">{t("contact.form.email.label")}</label>
-                        <input
-                            name="email"
-                            placeholder={t("contact.form.email.placeholder")}
-                            className="form-control"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="col-12">
-                    <div className="form-group">
-                        <label className="form-label">{t("contact.form.subject.label")}</label>
-                        <input
-                            name="subject"
-                            placeholder={t("contact.form.subject.placeholder")}
-                            className="form-control"
-                            type="text"
-                            value={formData.subject}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="col-md-12">
-                    <div className="form-group">
-                        <label className="form-label">{t("contact.form.message.label")}</label>
-                        <textarea
-                            name="message"
-                            placeholder={t("contact.form.message.placeholder")}
-                            rows={4}
-                            className="form-control"
-                            value={formData.message}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </div>
-
-                </div>
-                <div className="col-md-12">
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="term-condation" required/>
-                        <label className="form-label" htmlFor="term-condation">
-
-                            {t("contact.form.term.label1")} <a href="/term-condition" target="_blank">{t("contact.form.term.label2")}</a>.
-                        </label>
-                    </div>
-                </div>
-
-                <div className="col-md-12">
-                    <div className="send">
-                        <button
-                            className={`px-btn w-100 ${loading ? 'disabled' : ''}`}
-                            type="submit"
-                        >
-                            {loading ? 'Sending...' : 'Envoyer Message'}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </>
     );
 }

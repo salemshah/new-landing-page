@@ -3,18 +3,21 @@ import React from 'react';
 import parser from 'html-react-parser';
 import {Link as ScrollLink} from 'react-scroll';
 import {useTranslation} from "react-i18next";
+import fetcher from "../client/httpRequests";
+import useSWR from "swr";
 
 export default function About({data}) {
     const {t} = useTranslation();
-    const {imgSrc, btnUrl} =
-        data;
+    const {data: about} = useSWR('/about-active', fetcher)
+
+    const {btnUrl} = data;
     return (
         <section className="about-section section" id="about">
             <div className="container">
                 <div className="effect-1">
                     <img
                         src="/images/effect-1.svg"
-                        alt="Shape"
+                        alt="about-minda"
                         data-aos="zoom-in"
                         data-aos-duration="1200"
                         data-aos-delay="500"
@@ -23,7 +26,7 @@ export default function About({data}) {
                 <div className="effect-2">
                     <img
                         src="/images/effect-2.svg"
-                        alt="Shape"
+                        alt="about-maind"
                         data-aos="zoom-in"
                         data-aos-duration="1200"
                         data-aos-delay="400"
@@ -37,7 +40,7 @@ export default function About({data}) {
                         data-aos-delay="500"
                     >
                         <div className="about-banner text-center">
-                            <img src={imgSrc} alt="Thumb"/>
+                            <img src={about?.imgUrl} alt="About maind"/>
                         </div>
                     </div>
                     <div className="col-lg-6 col-xl-7 px-lg-5">
@@ -56,10 +59,12 @@ export default function About({data}) {
 
                                 <h2>{parser(t("about.miniTitle"))}</h2>
                             </div>
-                            <p>{t("about.description")}</p>
-                            <p>{t("about.description1")}</p>
-                            <p>{t("about.description2")}</p>
-                            <p>{t("about.description3")}</p>
+                            {/*{about?.description}*/}
+                            <div dangerouslySetInnerHTML={{__html: about?.description}}/>
+                            {/*<p>{t("about.description")}</p>*/}
+                            {/*<p>{t("about.description1")}</p>*/}
+                            {/*<p>{t("about.description2")}</p>*/}
+                            {/*<p>{t("about.description3")}</p>*/}
                             <div className="review-box">
                                 {/*{funfacts?.map((item, index) => (*/}
                                 {/*  <div className="r-box" key={index}>*/}

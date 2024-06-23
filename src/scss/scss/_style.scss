@@ -155,6 +155,17 @@ a {
     height: auto !important;
   }
 
+  .hero-social {
+    display: flex;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    gap: 10px;
+  }
+
   .hs-text-box {
     @include down-md {
       padding-bottom: 50px;
@@ -387,7 +398,7 @@ a {
     h5 {
       font-weight: 700;
       color: var(--px-black);
-      font-weight: 20px;
+      font-size: 20px;
       margin: 0 0 5px;
     }
 
@@ -626,6 +637,17 @@ a {
 *   Contact Us
 ---------------------------*/
 .contactus-section {
+
+  .hero-social {
+    display: flex;
+    padding: 5px;
+    border-radius: 100px;
+    justify-content: flex-start;
+    align-items: center;
+    //margin-left: 10px;
+    gap: 10px;
+  }
+
   .contactus-title {
     h5 {
       font-weight: 500;

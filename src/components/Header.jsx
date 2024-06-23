@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link as ScrollLink} from 'react-scroll';
 import {useTranslation} from "react-i18next";
-import SwitchLanguage from "./SwitchLanguage";
+// import SwitchLanguage from "./SwitchLanguage";
 
 export default function Header() {
     const [mobileToggle, setMobileToggle] = useState(false);
@@ -67,7 +67,7 @@ export default function Header() {
                         )
                     })}
 
-                    <SwitchLanguage/>
+                    {/*<SwitchLanguage/>*/}
                 </ul>
                 {/* Top Menu */}
                 <div className="d-flex">
