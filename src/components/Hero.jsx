@@ -1,28 +1,57 @@
 import {Icon} from '@iconify/react';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {TypeAnimation} from 'react-type-animation';
 import {Link as ScrollLink} from 'react-scroll';
-import {useTranslation} from "react-i18next";
-import useSWR from "swr";
-import fetcher from "../client/httpRequests";
+import axiosInstance from "../client/axiosInstence";
 import IconLink from "./IconLink";
+import {useTranslation} from "react-i18next";
+import Loading from "react-fullscreen-loading";
 
 export default function Hero({data, service}) {
     const {t} = useTranslation();
-    const {data: hero} = useSWR('/hero-active', fetcher)
+    const [hero, setHero] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Ensure hero and its properties exist before using them
+    useEffect(() => {
+        const fetchHero = async () => {
+            try {
+                const response = await axiosInstance.get('/hero-active');
+                setHero(response?.data?.data);
+            } catch (error) {
+                console.error("Error fetching hero data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchHero();
+    }, []);
+
+    // Fallback values for hero properties
     const textAnim1 = hero?.textAnim1 || 'Loading...';
     const textAnim2 = hero?.textAnim2 || 'Loading...';
+    const heading = hero?.heading || t("hero.defaultHeading");
+    const description = hero?.description || t("hero.defaultDescription");
+    const imgUrl = hero?.imgUrl || "/images/default-image.jpg";
     const {btnUrl} = data;
-    return (
-        <section className="home-section" id="home" data-scroll-index={0} style={{
-            background: `url("/images/hero-background.svg")`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            height: "100vh"
 
-        }}>
+    if (loading) return <Loading
+        loading={loading}
+        background="rgb(38 59 219 / 92%)"
+        loaderColor="rgb(100 252 197)"/>
+
+    return (
+        <section
+            className="home-section"
+            id="home"
+            data-scroll-index={0}
+            style={{
+                background: `url("/images/hero-background.svg")`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                height: "100vh"
+            }}
+        >
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-8">
@@ -32,8 +61,7 @@ export default function Hero({data, service}) {
                                 data-aos-duration="1200"
                                 data-aos-delay="100"
                             >
-                                {/*{t("hero.heading")}*/}
-                                {hero?.heading}
+                                {heading}
                             </h1>
                             <h3
                                 style={{minHeight: 120}}
@@ -55,9 +83,8 @@ export default function Hero({data, service}) {
                                 data-aos-duration="1200"
                                 data-aos-delay="300"
                             >
-                                <div dangerouslySetInnerHTML={{__html: hero?.description}}/>
+                                <div dangerouslySetInnerHTML={{__html: description}}/>
                             </div>
-
                             <div
                                 className="btn-bar d-flex align-items-sm-center flex-column flex-sm-row"
                                 data-aos="fade-up"
@@ -89,8 +116,7 @@ export default function Hero({data, service}) {
                     </div>
                     <div className="col-lg-4">
                         <div className="hs-banner">
-                            {/*<img src={imgUrl} className="home-banner" alt="minda"/>*/}
-                            <img src={hero?.imgUrl} className="home-banner" alt="minda"/>
+                            <img src={imgUrl} className="home-banner" alt="minda"/>
                         </div>
                     </div>
                 </div>
