@@ -21,14 +21,6 @@ export default function Overview({data}) {
                                 data-aos-delay={index * 100}
                             >
                                 <div className="services-body">
-                                    {/*<div className="icon">*/}
-                                    {/*  <Icon icon={item.icon} />*/}
-                                    {/*</div>*/}
-                                    {/*<h5>{item.title}</h5>*/}
-                                    {/*<p>{item.subTitle}</p>*/}
-                                    {/*<div className="rating-wrap">*/}
-                                    {/*  <Ratings ratings={item.ratings} />*/}
-                                    {/*</div>*/}
                                 </div>
                             </div>
                         </div>

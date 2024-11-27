@@ -1,31 +1,22 @@
 import {Icon} from '@iconify/react';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {TypeAnimation} from 'react-type-animation';
 import {Link as ScrollLink} from 'react-scroll';
+import {useQuery} from '@tanstack/react-query';
 import axiosInstance from "../client/axiosInstence";
 import IconLink from "./IconLink";
 import {useTranslation} from "react-i18next";
-import Loading from "react-fullscreen-loading";
+
+const fetchHero = async () => {
+    const {data} = await axiosInstance.get('/hero-active');
+    return data?.data;
+};
 
 export default function Hero({data, service}) {
     const {t} = useTranslation();
-    const [hero, setHero] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchHero = async () => {
-            try {
-                const response = await axiosInstance.get('/hero-active');
-                setHero(response?.data?.data);
-            } catch (error) {
-                console.error("Error fetching hero data:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchHero();
-    }, []);
+    // React Query for data fetching
+    const {data: hero, isError, error} = useQuery({queryKey: ['hero'], queryFn: fetchHero});
 
     // Fallback values for hero properties
     const textAnim1 = hero?.textAnim1 || 'Loading...';
@@ -35,10 +26,9 @@ export default function Hero({data, service}) {
     const imgUrl = hero?.imgUrl || "/images/default-image.jpg";
     const {btnUrl} = data;
 
-    if (loading) return <Loading
-        loading={loading}
-        background="rgb(38 59 219 / 92%)"
-        loaderColor="rgb(100 252 197)"/>
+    if (isError) {
+        console.log(error?.message)
+    }
 
     return (
         <section

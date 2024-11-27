@@ -3,12 +3,20 @@ import React from 'react';
 import parser from 'html-react-parser';
 import {Link as ScrollLink} from 'react-scroll';
 import {useTranslation} from "react-i18next";
-import useSWR from "swr";
-import fetcher from "../client/httpRequests";
+import axiosInstance from "../client/axiosInstence";
+import {useQuery} from "@tanstack/react-query";
+
+const fetchHero = async () => {
+    const {data} = await axiosInstance.get('/approach-active');
+    return data?.data;
+};
 
 export default function Approche({data}) {
     const {t} = useTranslation();
-    const {data: approach} = useSWR('/approach-active', fetcher)
+    const {data: approach, isError, error} = useQuery({queryKey: ['approach'], queryFn: fetchHero});
+    if (isError) {
+        console.log(error?.message)
+    }
     const {btnUrl} = data;
     return (
         <section className="about-section section" id="approach">

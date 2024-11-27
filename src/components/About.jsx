@@ -3,13 +3,20 @@ import React from 'react';
 import parser from 'html-react-parser';
 import {Link as ScrollLink} from 'react-scroll';
 import {useTranslation} from "react-i18next";
-import fetcher from "../client/httpRequests";
-import useSWR from "swr";
+import axiosInstance from "../client/axiosInstence";
+import {useQuery} from "@tanstack/react-query";
+
+const fetchHero = async () => {
+    const {data} = await axiosInstance.get('/about-active');
+    return data?.data;
+};
 
 export default function About({data}) {
     const {t} = useTranslation();
-    const {data: about} = useSWR('/about-active', fetcher)
-
+    const {data: about, isError, error} = useQuery({queryKey: ['about'], queryFn: fetchHero});
+    if (isError) {
+        console.log(error?.message)
+    }
     const {btnUrl} = data;
     return (
         <section className="about-section section" id="about">
@@ -51,31 +58,9 @@ export default function About({data}) {
                             data-aos-delay="400"
                         >
                             <div className="section-heading">
-                                {/*{miniTitle && (*/}
-                                {/*    <h6>*/}
-                                {/*        <span>{miniTitle}</span>*/}
-                                {/*    </h6>*/}
-                                {/*)}*/}
-
                                 <h2>{parser(t("about.miniTitle"))}</h2>
                             </div>
-                            {/*{about?.description}*/}
                             <div dangerouslySetInnerHTML={{__html: about?.description}}/>
-                            {/*<p>{t("about.description")}</p>*/}
-                            {/*<p>{t("about.description1")}</p>*/}
-                            {/*<p>{t("about.description2")}</p>*/}
-                            {/*<p>{t("about.description3")}</p>*/}
-                            <div className="review-box">
-                                {/*{funfacts?.map((item, index) => (*/}
-                                {/*  <div className="r-box" key={index}>*/}
-                                {/*    <h3>*/}
-                                {/*      {item.number}*/}
-                                {/*      <span>+</span>*/}
-                                {/*    </h3>*/}
-                                {/*    <label>{item.title}</label>*/}
-                                {/*  </div>*/}
-                                {/*))}*/}
-                            </div>
                             <div className="btn-bar">
                                 <ScrollLink
                                     to={btnUrl}
