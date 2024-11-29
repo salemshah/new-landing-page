@@ -32,16 +32,17 @@ export default function Contact({ data, service }) {
               </div>
             </div>
             <div className="col-lg-4 pe-md-5">
-              <div className="contact-banner d-none d-lg-block">
-                <img src={contactImg} alt="Avatar"/>
+              <div className="contact-banner d-none d-lg-block mb-5">
+                <img src={contactImg} alt="Minda logo"/>
               </div>
               <ContactInfo service={service}/>
-              <div className="mt-4 mt-md-0 hero-social">
-                <IconLink icon="ic:baseline-facebook" to={service?.facebookLink}/>
-                <IconLink icon="line-md:instagram" to={service?.instagramLink}/>
-                <IconLink icon="ic:baseline-tiktok" to={service?.tiktokLink}/>
-                <IconLink icon="line-md:twitter-x-alt" to={service?.xLink}/>
-                <IconLink icon="line-md:youtube" to={service?.youtubeLink}/>
+              <div className="mt-4 mt-md-0 hero-social flex-wrap">
+                {service?.facebookLink && <IconLink icon="ic:baseline-facebook" to={service?.facebookLink}/>}
+                {service?.instagramLink && <IconLink icon="line-md:instagram" to={service?.instagramLink}/>}
+                {service?.xLink && <IconLink icon="entypo-social:linkedin" to={service?.xLink}/>}
+                {/*{service?.tiktokLink && <IconLink icon="ic:baseline-tiktok" to={service?.tiktokLink}/>}*/}
+                {/*{service?.xLink && <IconLink icon="line-md:twitter-x-alt" to={service?.xLink}/>}*/}
+                {/*{service?.youtubeLink && <IconLink icon="line-md:youtube" to={service?.youtubeLink}/>}*/}
               </div>
             </div>
           </div>
